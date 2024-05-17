@@ -112,17 +112,19 @@ const Trailer = () => {
     <div className="flex w-full overflow-hidden">
       {/* <div className="hidden md:block flex-shrink-0 w-60"></div> */}
       <div className="min-[1250px]:ml-[226px] overflow-y-auto flex-grow">
-        <div className="p-5 w-full md:w-1/2 lg:w-1/3 xl:w-1/4">
-          {videoKey && (
-            <iframe
-              className=" w-full h-[450px] md:w-[1000px]  md:h-[450px] lg:h-[500px] video-frame"
-              src={`https://www.youtube.com/embed/${videoKey}`}
-              frameBorder="0"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              title="Iframe Example"
-            ></iframe>
-          )}
+        <div className="p-5 w-full ">
+        {videoKey && (
+        <div className="relative h-[450px] md:h-full  pb-[46.25%]">
+          <iframe
+            className="absolute top-0 left-0 w-full h-[450px] md:h-full"
+            src={`https://www.youtube.com/embed/${videoKey}`}
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            title="Iframe Example"
+          ></iframe>
+        </div>
+      )}  
         </div>
 
         <section className="mt-5 mx-auto max-w-[1000px]">
@@ -205,3 +207,6 @@ const Trailer = () => {
 };
 
 export default Trailer;
+
+
+
