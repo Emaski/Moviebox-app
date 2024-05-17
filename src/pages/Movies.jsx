@@ -23,16 +23,16 @@ const Movies = () => {
     console.log(movieData);
    
   return (
-    <div className="flex w-full overflow-hidden">
-      <div className="flex-shrink-0 w-60"></div>{" "}
+    <div className="flex w-full justify-center overflow-hidden">
+      {/* <div className="flex-shrink-0 w-60"></div>{" "} */}
       {/* Placeholder for fixed sidebar width */}
-      <div className="overflow-y-auto flex-grow">
-        <Navbar />
+      <div className="min-[1250px]:ml-[226px] overflow-y-auto flex-grow">
+        {/* <Navbar /> */}
         
         <section className="mt-10">
           <div className="max-w-[1300px] mx-auto py-0 px-5">
-            <div className="">
-              <div className="flex items-center gap-8 text-3xl ml-10 font-bold">
+            <div className="flex w-full md:px-4 lg:px-10">
+              <div className="flex items-center gap-8 text-2xl md:text-3xl  font-bold">
                 <FontAwesomeIcon
                   className="text-rose-700"
                   icon={faChartColumn}
@@ -40,7 +40,7 @@ const Movies = () => {
                 <span>Featured Movies</span>
               </div>
             </div>
-            <div className="mt-8 grid max-sm-grid-cols-2 max-md:grid-cols-3 md:grid-cols-3 gap-x-2 gap-y-5 sm:gap-y-10 place-items-center items-start flex-col justify-start ">
+            <div className="mt-8 grid  max-sm-grid-cols-2 max-md:grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-5 sm:gap-y-10 place-items-center items-start flex-col justify-start ">
               {movieData.map((data, index) => (
                 <Card
                   key={data.id}
