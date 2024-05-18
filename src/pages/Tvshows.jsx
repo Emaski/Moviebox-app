@@ -26,7 +26,7 @@ const Tvshows = () => {
     <div className="flex-shrink-0 w-60"></div>{" "}
     {/* Placeholder for fixed sidebar width */}
     <div className="overflow-y-auto flex-grow">
-      <Navbar />
+      
       
       <section className="mt-10">
           <div className="max-w-[1300px] mx-auto py-0 px-5">
