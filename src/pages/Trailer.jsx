@@ -11,6 +11,7 @@ const Trailer = () => {
   const [trailerData, setTrailerData] = useState();
   const [similarMovies, setSimilarMovies] = useState([]);
   const [genres, setGenres] = useState([]);
+  const [noTrailer, setNoTrailer] = useState(false); // New state for no trailer
   const { id } = useParams();
 
   const getVideos = async (id) => {
@@ -18,24 +19,26 @@ const Trailer = () => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}/videos?api_key=99d30588bfd77d386ee36fc6f1c766de&language=en-US`
       );
-  
+
       const json = response.data; // Axios already parses JSON
-  
+
       if (json.results && json.results.length > 0) {
         const trailerVideo = json.results.find(
           (video) => video.name === "Official Trailer"
         );
-  
+
         if (trailerVideo) {
           setVideoKey(trailerVideo.key);
+          setNoTrailer(false); // Reset no trailer state
         } else {
-          console.error("No trailer found");
+          setNoTrailer(true); // No trailer found
         }
       } else {
-        console.error("No results found in the API response");
+        setNoTrailer(true); // No results found in the API response
       }
     } catch (error) {
       console.error("Error fetching video data:", error);
+      setNoTrailer(true); // Error in fetching video data
     }
   };
 
@@ -113,18 +116,20 @@ const Trailer = () => {
       {/* <div className="hidden md:block flex-shrink-0 w-60"></div> */}
       <div className="min-[1250px]:ml-[226px] overflow-y-auto flex-grow">
         <div className="p-5 w-full ">
-        {videoKey && (
-        <div className="relative h-[450px] md:h-full  pb-[46.25%]">
-          <iframe
-            className="absolute top-0 left-0 w-full h-[450px] md:h-full"
-            src={`https://www.youtube.com/embed/${videoKey}`}
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-            title="Iframe Example"
-          ></iframe>
-        </div>
-      )}  
+          {videoKey ? (
+            <div className="relative h-[450px] md:h-full  pb-[46.25%]">
+              <iframe
+                className="absolute top-0 left-0 w-full h-[450px] md:h-full"
+                src={`https://www.youtube.com/embed/${videoKey}`}
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                title="Iframe Example"
+              ></iframe>
+            </div>
+          ) : (
+            noTrailer && <div className="text-center text-red-500">Trailer Video not available</div>
+          )}
         </div>
 
         <section className="mt-5 mx-auto max-w-[1000px]">
@@ -157,9 +162,10 @@ const Trailer = () => {
               </div>
 
               <div className="mt-10">
-                <h3 className="flex items-center text-xl mb-5 font-semibold">
-                  Similar movies <ChevronRight className="ml-2 w-5 h-5" />
+                <h3 className="flex items-center text-xl md:text-2xl mb-5 font-semibold">
+                  Similar <ChevronRight className="mt-2 ml-2 w-7 h-6" />
                 </h3>
+
                 <div className="flex flex-wrap items-center mt-8  gap-4">
                   {similarMovies.slice(0, 6).map((simData, index) => (
                     <Similar key={index} simPosterPath={simData.poster_path} />
@@ -169,13 +175,13 @@ const Trailer = () => {
             </div>
 
             <div className="max-md:mt-10 grow pl-2">
-              <div className="  text-rose-700 flex items-center md:justify-end gap-2">
-                <span className="border-r-2 pr-2 border-gray-200 flex gap-1 items-center text-lg font-bold ">
-                  <Star className="text-orange-300 " />
+              <div className="text-rose-700 flex items-center md:justify-end gap-2">
+                <span className="border-r-2 pr-2 border-gray-200 flex gap-1 items-center text-lg font-bold">
+                  <Star className="text-orange-300" />
                   {trailerData.vote_average}
                 </span>
                 <span className="text-lg text-rose-700 font-bold">
-                  {trailerData.vote_count} votes{" "}
+                  {trailerData.vote_count} votes
                 </span>
               </div>
               <div className="flex flex-col justify-center gap-2 mt-6 items-center">
@@ -183,7 +189,7 @@ const Trailer = () => {
                   <Eye />
                   see showtimes
                 </div>
-                <div className="w-full hover:cursor-pointer flex  bg-rose-200 border border-rose-700 text-black font-medium justify-center items-center gap-2 rounded-lg py-3">
+                <div className="w-full hover:cursor-pointer flex bg-rose-200 border border-rose-700 text-black font-medium justify-center items-center gap-2 rounded-lg py-3">
                   <List />
                   More Watch options
                 </div>
@@ -207,6 +213,3 @@ const Trailer = () => {
 };
 
 export default Trailer;
-
-
-

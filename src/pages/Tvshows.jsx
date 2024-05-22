@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +8,7 @@ import { faChartColumn } from "@fortawesome/free-solid-svg-icons";
 const Tvshows = () => {
 
     const [showsData, setShowsData] = useState([]);
+    const navigate = useNavigate();
 
     const getShows = () => {
         fetch("https://api.themoviedb.org/3/discover/tv?api_key=99d30588bfd77d386ee36fc6f1c766de")
@@ -20,6 +22,12 @@ const Tvshows = () => {
     }, []);
 
     console.log(showsData);
+
+
+    const handleWatchTrailer = (data) => {
+      localStorage.setItem("trailerData", JSON.stringify(data));
+      navigate("/trailer");
+    };
 
   return (
     <div className="flex w-full overflow-hidden">
@@ -41,6 +49,7 @@ const Tvshows = () => {
             </div>
             <div className="mt-8 grid max-sm-grid-cols-2 max-md:grid-cols-3 md:grid-cols-3 gap-x-2 gap-y-5 sm:gap-y-10 place-items-center items-start flex-col justify-start ">
               {showsData.map((data, index) => (
+                <div key={data.id} onClick={() => handleWatchTrailer(data)}>
                 <Card
                   key={index}
                   posterPath={data.poster_path}
@@ -48,6 +57,7 @@ const Tvshows = () => {
                   releaseDate={data.first_air_date}
                   rating={data.vote_average}
                 />
+                </div>
               ))}
             </div>
           </div>
