@@ -134,7 +134,7 @@ const Trailer = () => {
 
         <section className="mt-5 mx-auto max-w-[1000px]">
           <div className="flex max-md:flex-col pb-10 max-lg:px-4 items-start justify-start">
-            <div className="md:w-[75%]  max-md:border-none border-r p-2 border-r-gray-200">
+            <div className="md:w-[75%]  gitmax-md:border-none border-r p-2 border-r-gray-200">
               <div className="pb-5">
                 <h1 className="text-2xl font-medium">{trailerData.title}</h1>
                 <div className="flex gap-2 items-center justify-start m-2">
