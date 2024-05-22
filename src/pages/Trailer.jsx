@@ -59,7 +59,7 @@ const Trailer = () => {
       console.error("Error fetching similar movies:", error);
     }
   };
-
+ 
   const getMovieGenres = async (id) => {
     try {
       const response = await fetch(
