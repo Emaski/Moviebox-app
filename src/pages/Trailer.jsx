@@ -140,7 +140,7 @@ const Trailer = () => {
                 <div className="flex gap-2 items-center justify-start m-2">
                   {genres.map((genre, index) => (
                     <Span key={index} genreName={genre} />
-                  ))} 
+                  ))}  
                 </div>
                 <div className="mt-4 flex flex-col gap-4">
                   <p className="text-sm leading-2">{trailerData.overview}</p>

@@ -9,7 +9,7 @@ const getVideos = async (id) => {
           },
         }
       );
-  
+   
       const results = response.data.results;
       const trailerVideo = results.find((video) => video.name === "Official Trailer");
   
