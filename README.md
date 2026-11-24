@@ -1,8 +1,40 @@
-# React + Vite
+# 🎬 Moviebox App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern movie and TV show discovery web application built with React, Vite, and Tailwind CSS. Browse newly released movies and TV series, inspect detailed metadata, and watch official trailers directly in the browser.
 
-Currently, two official plugins are available:
+🌐 **Live Demo:** [moviebox-app-kohl.vercel.app](https://moviebox-app-kohl.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+
+## ✨ Features
+
+- **Discover Movies & TV Shows:** Browse trending, popular, and newly released movies and television series.
+- **Detailed Media Overview:** View synopses, release dates, ratings, genres, and cast/production details for any selected title.
+- **Trailer Playback:** Watch official movie and TV show trailers directly within the app.
+- **Responsive UI:** Styled with Tailwind CSS for seamless viewing across desktop, tablet, and mobile screens.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework:** [React](https://react.dev/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) & PostCSS
+- **Linting:** ESLint
+- **Package Manager:** Yarn / npm
+- **Deployment:** [Vercel](https://vercel.com/)
+
+---
+
+## 📂 Project Structure
+
+```text
+Moviebox-app/
+├── public/              # Static assets
+├── src/                 # Application source code (components, pages, styles, API services)
+├── index.html           # Main HTML entry point
+├── package.json         # Dependencies and scripts
+├── tailwind.config.js   # Tailwind CSS configuration
+├── postcss.config.js    # PostCSS configuration
+├── vite.config.js       # Vite bundler configuration
+└── .eslintrc.cjs        # ESLint rules
